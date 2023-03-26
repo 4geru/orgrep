@@ -5,7 +5,7 @@ require_relative './search_word_list'
 
 module Orgrep
   class Grep
-    def search(search_word)
+    def search(search_words)
       # TODO raise error when repositories are not registered
       # === initial setup ===
       puts('=== initial setup ===')
@@ -17,8 +17,8 @@ module Orgrep
       # execute service
       puts('=== running ===')
       # TODO export as csv file in executed path
-      search_words = SearchWordList.words(search_word)
-      print(export_as_csv(search_words))
+      specified_search_words = SearchWordList.words(search_words)
+      print(export_as_csv(specified_search_words))
       # === clean up ===
       puts('=== clean up ===')
       git_stash_pop_files
@@ -89,7 +89,7 @@ module Orgrep
     end
 
     def repositories
-      @repositories ||= Orgrep::Repository.new.repositories
+      @repositories ||= Orgrep::Repository.repositories
     end
   end
 end

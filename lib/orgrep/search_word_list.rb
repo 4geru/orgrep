@@ -2,10 +2,10 @@
 
 module Orgrep
   class SearchWordList
-    def self.words(word)
-      return [word] if word
+    def self.words(words)
+      return words if words
 
-      File.read('./search_words.txt').split("\n").uniq
+      File.read(Orgrep::SPECIFIED_SEARCH_WORDS_TXT_PATH).split("\n").uniq
     end
   end
 end

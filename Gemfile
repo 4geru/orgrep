@@ -11,4 +11,4 @@ gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.21"
 
-gem 'dotenv', '~> 2.8'
+gem "dotenv", "~> 2.8"

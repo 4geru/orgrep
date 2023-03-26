@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Orgrep
+  # initialized commands
   class Init
     def self.setup
       create_file(Orgrep::SPECIFIED_REPOSITORY_TXT_PATH)
@@ -12,20 +13,20 @@ module Orgrep
 
     class << self
       private
-    
+
       def create_file(path)
         if FileTest.exist?(path)
           puts "#{path} already exists"
         else
-          File.write(path, '')
+          File.write(path, "")
           puts "created files #{path}"
         end
       end
 
       def setup_env_file
-        if `cat #{Orgrep::ENV_PATH} | grep ORGREP_ORG_URI`.empty?
-          File.write(Orgrep::ENV_PATH, "ORGREP_ORG_URI=TODO_WRITE\n", mode: "a")
-        end
+        return unless `cat #{Orgrep::ENV_PATH} | grep ORGREP_ORG_URI`.empty?
+
+        File.write(Orgrep::ENV_PATH, "ORGREP_ORG_URI=TODO_WRITE\n", mode: "a")
       end
     end
   end

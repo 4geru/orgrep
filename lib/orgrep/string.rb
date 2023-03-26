@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# extend String class
 class String
   # reference: https://gist.github.com/Kameshwaran/61a547f9751e7bd12954
   def camelize
